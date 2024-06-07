@@ -16,7 +16,7 @@ export default async function Home() {
   if (session === null) redirect("/login");
 
   return (
-    <main className="flex min-h-screen flex-col items-center justify-center">
+    <main className="flex min-h-screen flex-col items-center">
       <AuthButton />
 
       <Suspense fallback={<Loading />}>
