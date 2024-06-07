@@ -1,17 +1,18 @@
 /* eslint-disable @typescript-eslint/no-misused-promises */
 "use client";
 
-import { type Session } from "@supabase/supabase-js";
+import { type User } from "@supabase/supabase-js";
 import { useRouter } from "next/navigation";
+import { Button } from "@nextui-org/react";
 
 import { createClient } from "../../utils/supabase/client";
 import { GithubIcon } from "../icons";
 
 interface AuthButtonClientProps {
-  session: Session | null;
+  user: User | null;
 }
 
-const AuthButtonClient = ({ session }: AuthButtonClientProps) => {
+const AuthButtonClient = ({ user }: AuthButtonClientProps) => {
   const router = useRouter();
   const supabase = createClient();
 
@@ -37,27 +38,23 @@ const AuthButtonClient = ({ session }: AuthButtonClientProps) => {
     }
   };
 
-  if (session !== null) {
+  if (user !== null) {
     return (
-      <button
-        type="button"
-        className="focus:outline-none text-white bg-red-700 hover:bg-red-800 focus:ring-4 focus:ring-red-300 font-medium rounded-lg text-sm px-5 py-2.5 me-2 mb-2 dark:bg-red-600 dark:hover:bg-red-700 dark:focus:ring-red-900"
-        onClick={logout}
-      >
+      <Button type="button" size="sm" radius="sm" onClick={logout}>
         Log Out
-      </button>
+      </Button>
     );
   }
 
   return (
-    <button
+    <Button
       type="button"
       className="text-white bg-[#24292F] hover:bg-[#24292F]/90 focus:ring-4 focus:outline-none focus:ring-[#24292F]/50 font-medium rounded-lg text-sm px-5 py-2.5 text-center inline-flex items-center dark:focus:ring-gray-500 dark:hover:bg-[#050708]/30 me-2 mb-2"
       onClick={handleSignIn}
     >
       <GithubIcon />
       Sign in with Github
-    </button>
+    </Button>
   );
 };
 
