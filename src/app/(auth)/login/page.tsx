@@ -1,4 +1,4 @@
-import AuthButtonServer from "../components/AuthButton/server";
+import AuthButtonServer from "@/components/AuthButton/server";
 
 const Login = async () => {
   return (

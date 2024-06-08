@@ -1,5 +1,5 @@
-import { createClient } from "../../utils/supabase/server";
-import Post from "../Post";
+import { createClient } from "@/utils/supabase/server";
+import Post from "@/components/Post";
 
 const Feed = async () => {
   const supabase = createClient();

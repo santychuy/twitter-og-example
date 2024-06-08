@@ -1,7 +1,8 @@
 import type { Metadata } from "next";
 
+import "@/styles/globals.css";
+
 import { Providers } from "./providers";
-import "./styles/globals.css";
 
 export const metadata: Metadata = {
   title: "Twitter OG",
@@ -16,7 +17,12 @@ export default function RootLayout({
   return (
     <html lang="en" className="dark">
       <body>
-        <Providers>{children}</Providers>
+        <Providers>
+          <nav className="flex items-center px-2 h-10 border-b border-white/20">
+            Twitter Example
+          </nav>
+          {children}
+        </Providers>
       </body>
     </html>
   );

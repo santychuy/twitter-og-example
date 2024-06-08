@@ -5,8 +5,8 @@ import { type User } from "@supabase/supabase-js";
 import { useRouter } from "next/navigation";
 import { Button } from "@nextui-org/react";
 
-import { createClient } from "../../utils/supabase/client";
-import { GithubIcon } from "../icons";
+import { createClient } from "@/utils/supabase/client";
+import { GithubIcon } from "@/components/icons";
 
 interface AuthButtonClientProps {
   user: User | null;
@@ -21,7 +21,7 @@ const AuthButtonClient = ({ user }: AuthButtonClientProps) => {
       await supabase.auth.signInWithOAuth({
         provider: "github",
         options: {
-          redirectTo: "http://localhost:3001/auth/callback",
+          redirectTo: "http://localhost:3000/auth/callback",
         },
       });
     } catch (error) {

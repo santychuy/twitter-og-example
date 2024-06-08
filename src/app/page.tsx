@@ -1,13 +1,11 @@
 import { Suspense } from "react";
 import { redirect } from "next/navigation";
 
-import { createClient } from "./utils/supabase/server";
-import MainLayout from "./Main/layout";
-import AsideLayout from "./Aside/layout";
-import FormTweet from "./components/FormTweet";
-import Feed from "./components/Feed";
-import Loading from "./components/Feed/loading";
-import AuthButton from "./components/AuthButton/server";
+import { createClient } from "@/utils/supabase/server";
+import FormTweet from "@/components/FormTweet";
+import Feed from "@/components/Feed";
+import Loading from "@/components/Feed/loading";
+import AuthButton from "@/components/AuthButton/server";
 
 export default async function Home() {
   const supabase = createClient();
@@ -20,16 +18,18 @@ export default async function Home() {
 
   return (
     <div className="flex min-h-screen">
-      <AsideLayout>Left</AsideLayout>
-      <MainLayout>
+      <aside className="min-w-32 max-w-52 basis-[208px] shrink-[999999] p-3">
+        Left
+      </aside>
+      <main className="flex flex-col pt-5 grow min-w-64 basis-[400px] border-l border-r border-white/30">
         <FormTweet avatarUrl={user.user_metadata.avatar_url} />
         <Suspense fallback={<Loading />}>
           <Feed />
         </Suspense>
-      </MainLayout>
-      <AsideLayout className="flex justify-end">
+      </main>
+      <aside className="min-w-32 max-w-52 basis-[208px] shrink-[999999] p-3 flex justify-end">
         <AuthButton />
-      </AsideLayout>
+      </aside>
     </div>
   );
 }
