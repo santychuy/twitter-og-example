@@ -1,11 +1,11 @@
 import { Suspense } from "react";
 import { redirect } from "next/navigation";
 
-import { createClient } from "@/utils/supabase/server";
+import Feed from "@/app/Feed";
+import Loading from "@/app/Feed/loading";
 import FormTweet from "@/components/FormTweet";
-import Feed from "@/components/Feed";
-import Loading from "@/components/Feed/loading";
 import AuthButton from "@/components/AuthButton/server";
+import { createClient } from "@/utils/supabase/server";
 
 export default async function Home() {
   const supabase = createClient();

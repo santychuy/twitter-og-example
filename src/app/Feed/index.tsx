@@ -6,7 +6,8 @@ const Feed = async () => {
 
   const { data: posts } = await supabase
     .from("posts")
-    .select("*, users(avatar_url, username, name)");
+    .select("*, users(avatar_url, username, name)")
+    .order("created_at", { ascending: false });
 
   return (
     <section className="flex flex-col px-0.5 min-h-screen max-w-[600px] gap-3">
